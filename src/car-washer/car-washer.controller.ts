@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CarWasherService } from './car-washer.service';
 import { CreateCarWasherDto } from './dto/create-car-washer.dto';
 import { UpdateCarWasherDto } from './dto/update-car-washer.dto';
