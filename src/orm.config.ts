@@ -9,4 +9,5 @@ export const config: TypeOrmModuleOptions = {
     database: '',
     synchronize: true,
     entities: ['dist/**/*.entity{.ts,.js}'],
+    ssl:{rejectUnauthorized:false},
 };
