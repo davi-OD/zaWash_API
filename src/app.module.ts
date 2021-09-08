@@ -1,24 +1,19 @@
-import dotenv from 'dotenv/config';
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { config } from './orm.config';
+// import { WasherModule } from './washer/washer.module';
+import { CarModule } from './car/car.module';
+import { ExpenseModule } from './expense/expense.module';
+import { WasherModule } from './washer/washer.module';
+import { CarWasherModule } from './car-washer/car-washer.module';
+
+
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(<string>process.env.POSTGRES_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
-  ],
+  imports: [TypeOrmModule.forRoot(config), WasherModule, CarModule, ExpenseModule, CarWasherModule],
   controllers: [AppController],
   providers: [AppService],
 })
